@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang= "pt-BR">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+    <title>LIVROS LIDOS</title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+    <script src="js/dateFormat.js"></script>
+    <style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap');
+
+      #title{font-family: 'Bebas Neue', cursive ; color: #fff; text-shadow: #000 5px 5px 5px; text-align: center; font-size: 120px; margin-top: 30px;}
+  
+      a{color:#fff; text-decoration: none;}
+      a:hover{color:#fff; text-decoration: none;}
+
+      #link a:hover{color: #DCDCDC;}
+
+
+      body{margin:0; padding: 0; font-family: sans-serif; background: url(img/livros2.png) no-repeat; background-size: cover; }
+
+    
+      
+    </style>
+
+
+      
+    </head>
+    <body>
+
+  
+  <div class="container-fluid" > 
+
+
+<div class="row" style="font-size: 16px; color: #fff;">
+   
+    <nav class="navbar navbar-expand-lg" id="link">
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="livros.html">Cadastro<span class="sr-only">(current)</span></a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="inicial.html">Página Inicial </a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="consultar.html"> Consultar</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+  </div>
+
+
+
+  <hr style="margin-top: 0;background-color: #fff;">
+
+<div class="header clearfix">
+
+          <div class="row">
+            <div class="col-12" id="topo"> 
+
+        <h1 id="title">CADASTRAR</h1> 
+        
+        </div>
+      </div>
+
+<div class="jumbotron" style="background: rgb(0, 0, 0) transparent; background: rgba(0, 0, 0, 0.6); margin-left: 10%; 
+margin-right: 10%; margin-top:; margin-bottom: 5%">
+
+<div id="formulario" style="font-weight:; color: #fff; ">
+
+  <div class="form-row ml-5">
+
+    <div class="form-group col-3 mr-5  ml-5 mt-2">
+      <label for="inputLivro">Livro</label>
+      <input type="text" class="form-control" id="inputLivro" placeholder="Nome do livro">
+    </div>
+
+
+    <div class="form-group col-3 mr-5 mt-2">
+      <label for="inputAutor">Autor(a)</label>
+      <input type="text" class="form-control" id="inputAutor" placeholder="Nome do autor(a)">
+    </div>
+
+
+  <div class="form-group col-3  mr-5 mt-2">
+    <label for="inputPaginas">Total de páginas</label>
+    <input type="number" class="form-control" id="inputPaginas" placeholder="Número">
+  </div>
+</div>
+
+<div class="form-row ml-5">
+  <div class="form-group col-3 mr-5  ml-5">
+    <label for="inputGenero">Gênero</label>
+     <select class="custom-select mr-sm-1" id="inlineFormCustomSelect">
+                <option value="0">Ação</option>
+                <option value="1">Autoajuda</option>
+                <option value="2">Aventura</option>
+                <option value="3">Bibliografia</option>
+                <option value="4">Carta</option>
+                <option value="5">Científico</option>
+                <option value="6">Conto</option>
+                <option value="7">Crônica</option>
+                <option value="8">Didático</option>
+                <option value="9">Drama</option>
+                <option value="10">Épico</option>
+                <option value="11">Fantasia</option>
+                <option value="12">Ficção científica</option>
+                <option value="13">Guia</option>
+                <option value="14">Histórico</option>
+                <option value="15">Humor</option>
+                <option value="16">Infantojuvenil</option>
+                <option value="17">Jogo</option>
+                <option value="18">Romance</option>
+                <option value="19">Saúde</option>
+                <option value="20">Terror</option>
+            </select>
+    
+  </div>
+
+    <div class="form-group col-3  mr-5  " id="date" >
+      <label for="inputInicial">Data inicial</label>
+      <input type="date" class="form-control" id="inputInicial">
+    </div>
+
+
+    <div class="form-group col-3 ">
+      <label for="inputFinal">Data Final</label>
+      <input type="date" class="form-control" id="inputFinal">
+    </div>
+  </div>
+
+
+
+  <br>
+
+
+  <div class="form-row ml-5" >
+    <button type="submit" style="margin-left: 24%;" class="btn btn-success mr-3 col-3 btn-lg" id="salvar" onclick="salvar()">Salvar</button>
+    <a href="consultar.html"><button type="submit" class="btn btn-primary  col-3 btn-lg">Consultar </a></button> 
+
+  </a>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+   
+
+      <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+      <script type="text/javascript" src="js/bootstrap.js"></script>
+      <script type="text/javascript" src="js/bootstrap.js"></script>
+      <script type="text/javascript" src="js/consulta.js"></script>
+
+
+    </body>
+</html>
+
+
+
+ 

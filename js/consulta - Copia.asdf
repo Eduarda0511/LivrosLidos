@@ -1,0 +1,194 @@
+
+var vetorCentral="";
+if(localStorage.getItem("vetorTarefas") == null){
+    localStorage.setItem("vetorTarefas", `[]`);
+} 
+if(localStorage.getItem("controleCodigo") == null){
+    localStorage.setItem("controleCodigo", 1);
+}
+
+
+function salvar(){
+	
+	/*Ler os elementos dos inputs*/
+	var inputLivro = document.getElementById('inputLivro').value;
+	var inputAutor = document.getElementById('inputAutor').value;
+	var inputPaginas = parseInt(document.getElementById('inputPaginas').value);
+	var inputInicial = new Date(document.getElementById('inputInicial').value);
+	var inputFinal = new Date(document.getElementById('inputFinal').value);
+	var inputdiferenca = Math.abs(inputFinal.getTime() - inputInicial.getTime());
+
+	inputdiferenca = Math.ceil(inputdiferenca / (1000*3600*24)); //converter para horas, após faz a diferença de dias
+
+	var genero = document.getElementById('inlineFormCustomSelect').options[document.getElementById('inlineFormCustomSelect').selectedIndex].innerText;
+
+
+	/*Fiz um objeto, para separar cada item*/
+	livro = {
+		nome: inputLivro,
+		autor: inputAutor,
+		pagina: inputPaginas,
+		genero: genero,
+		diferenca: inputdiferenca,
+		
+		
+	}
+
+	console.log(livro);
+
+
+	/*localStorage.setItem('teste', 'Olá mundo');
+	console.log(localStorage.getItem('teste'));*/
+
+
+	/*Trasformei o objeto em string*/
+	if(localStorage.getItem('patio2') === null){
+		var livros = [];
+		livros.push(livro);
+		localStorage.setItem('patio2', JSON.stringify(livros));
+	}else{
+		var livros = JSON.parse(localStorage.getItem('patio2'));
+		livros.push(livro);
+		localStorage.setItem('patio2', JSON.stringify(livros));
+	}
+
+
+}
+
+
+function salvar2(){
+	var i = localStorage.getItem('i');
+
+	var inputLivro = document.getElementById('inputLivro').value;
+	var inputAutor = document.getElementById('inputAutor').value;
+	var inputPaginas = parseInt(document.getElementById('inputPaginas').value);
+	var inputInicial = new Date(document.getElementById('inputInicial').value);
+	var inputFinal = new Date(document.getElementById('inputFinal').value);
+	var inputdiferenca = Math.abs(inputFinal.getTime() - inputInicial.getTime());
+
+	inputdiferenca = Math.ceil(inputdiferenca / (1000*3600*24));
+
+	var genero = document.getElementById('inlineFormCustomSelect').options[document.getElementById('inlineFormCustomSelect').selectedIndex].innerText;
+
+
+	/*Fiz um objeto, para separar cada item*/
+	livro = {
+		nome: inputLivro,
+		autor: inputAutor,
+		pagina: inputPaginas,
+		genero: genero,
+		diferenca: inputdiferenca,
+		
+		
+	}
+
+	var livros = JSON.parse(localStorage.getItem('patio2'));
+	livros[i] = livro;
+
+	livros = JSON.stringify(livros);
+	localStorage.setItem('patio2',livros);
+}
+
+
+
+/*Utilizei esta função para remover itens*/
+function apagarLivro(nome){
+	var livros = JSON.parse(localStorage.getItem('patio2'));
+
+	for(var a=0; a < livros.length; a++){
+		if(livros[a].nome == nome){
+			livros.splice(a,1);
+		}
+		localStorage.setItem('patio2', JSON.stringify(livros));
+	}
+
+
+
+	window.open("consultar.html","_self"); //para atualizar as informações da função
+
+	mostraPatio();
+	
+}
+
+function editar(i){
+	var livros = JSON.parse(localStorage.getItem('patio2'));
+
+		var nome = livros[i].nome;
+		var autor = livros[i].autor;
+		var pagina = livros[i].pagina;
+		var diferenca = livros[i].diferenca;
+		var genero = livros[i].genero;
+		var array = new Array(nome, autor, pagina, genero);
+
+	localStorage.setItem('atual', JSON.stringify(array));
+	localStorage.setItem('i', i);
+}
+
+
+	
+/*Para apresentar os itens da consulta..*/
+
+
+function mostraPatio(){
+	var livros = JSON.parse(localStorage.getItem('patio2'));
+	var livrosResultado = document.getElementById('resultados');
+
+
+	livrosResultado.innerHTML = '';
+
+	for(var i=0; i < livros.length; i++){
+		var numero = i;
+		var nome = livros[i].nome;
+		var autor = livros[i].autor;
+		var pagina = livros[i].pagina;
+		var diferenca = livros[i].diferenca;
+		var genero = livros[i].genero;
+
+
+		
+
+
+		livrosResultado.innerHTML += '<tr><td>' + (numero + 1) + '</td><td>' + nome + '</td><td>' + autor + '</td><td>' + pagina + '</td><td>'
+ + genero + '</td><td>' + diferenca +
+ '</td><td><a href="editar.html"><button type="submit" class="btn btn-light" onclick="editar(\''+i+'\')"><i class="material-icons">create</i> </button></a>'+
+ '</td><td><button type="submit" class=" btn btn-light" onclick="apagarLivro(\''+nome+'\')"><i class="material-icons">delete</i></button>' +
+ '</td></tr>' 
+
+
+		
+	}	
+
+
+}
+
+		
+
+
+var soma = 0;
+var soma1 = 0;
+
+function mostraTotal(){
+
+	var livros = JSON.parse(localStorage.getItem('patio2'));
+	var livrosTotal = document.getElementById('total');
+
+livrosTotal.innerHTML = '';
+
+	for(var i=0; i < livros.length; i++){
+		var numero = i;
+		var pagina = livros[i].pagina;
+
+		numero++;
+		soma1 = soma1 + pagina;
+
+
+	
+
+	}	
+	
+	
+	
+		livrosTotal.innerHTML +=  '<tr><td>' + numero  + '</td><td>' +  soma1 + '</td></tr>'
+	
+}
+
